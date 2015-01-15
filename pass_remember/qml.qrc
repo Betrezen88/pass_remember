@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MainView.qml</file>
+        <file>CategoryPanel.qml</file>
+        <file>SearchPanel.qml</file>
+    </qresource>
+</RCC>
