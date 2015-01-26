@@ -1,0 +1,8 @@
+v0.1
+- Utworzono podstawowe GUI
+-- Widok główny
+-- panel z wyborem kategorii
+-- panel wyszukiwania
+
+v0.2
+- Utworzono obiekt ContextMenu

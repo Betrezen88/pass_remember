@@ -4,5 +4,8 @@
         <file>MainView.qml</file>
         <file>CategoryPanel.qml</file>
         <file>SearchPanel.qml</file>
+        <file>ContextMenu.qml</file>
+        <file>AddCategoryView.qml</file>
+        <file>AddPasswordView.qml</file>
     </qresource>
 </RCC>

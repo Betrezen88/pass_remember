@@ -4,6 +4,9 @@ import QtQuick.Controls 1.2
 Item {
     id: main
     height: 40
+
+    signal showMenu()
+
     Row {
         id: mainRow
         anchors.fill: main
@@ -18,6 +21,10 @@ Item {
             width: 40;
             anchors { right: mainRow.right; top: mainRow.top; bottom: mainRow.bottom }
             text: "M"
+            onClicked: {
+                console.log("menuButton clicked");
+                main.showMenu();
+            }
         }
     }
 }
