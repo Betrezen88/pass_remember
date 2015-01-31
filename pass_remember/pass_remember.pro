@@ -2,7 +2,9 @@ TEMPLATE = app
 
 QT += qml quick widgets
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    Database.cpp \
+    Passdata.cpp
 
 RESOURCES += qml.qrc
 
@@ -14,3 +16,7 @@ include(deployment.pri)
 
 DISTFILES += \
     doc.txt
+
+HEADERS += \
+    Database.h \
+    Passdata.h

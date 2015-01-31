@@ -26,7 +26,7 @@ Item {
         anchors { right: parent.right; bottom: parent.bottom; }
         Button { text: "Add Category"; onClicked: main.showAddCategory(); }
         Button { text: "Add Password"; onClicked: main.showAddPassword(); }
-        Button { text: "Button 3" }
+        Button { text: "Quit"; }
     }
 }
 
