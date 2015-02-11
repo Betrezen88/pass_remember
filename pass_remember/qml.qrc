@@ -7,5 +7,6 @@
         <file>ContextMenu.qml</file>
         <file>AddCategoryView.qml</file>
         <file>AddPasswordView.qml</file>
+        <file>Database.js</file>
     </qresource>
 </RCC>

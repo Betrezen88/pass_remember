@@ -1,10 +1,10 @@
 TEMPLATE = app
 
-QT += qml quick widgets
+QT += qml quick widgets sql
 
 SOURCES += main.cpp \
     Database.cpp \
-    Passdata.cpp
+    Password.cpp
 
 RESOURCES += qml.qrc
 
@@ -19,4 +19,4 @@ DISTFILES += \
 
 HEADERS += \
     Database.h \
-    Passdata.h
+    Password.h

@@ -6,3 +6,16 @@ v0.1
 
 v0.2
 - Utworzono obiekt ContextMenu
+
+v0.3
+
+v0.4
+- utworzenie klasy Database
+-- tworzenie bazy sqlite                    +
+-- nawiązywanie połączenia z bazą danych    +
+-- dodawanie kategori do bazy               +
+-- dodawanie hasła
+-- pobieranie listy kategorii
+    - zrobione w wersji QStringList
+    - czy lepiej zrobić jako obiekt ?
+-- pobieranie haseł

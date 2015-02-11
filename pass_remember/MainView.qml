@@ -16,11 +16,16 @@ Item {
             id: categoryPanel
             anchors { left: mainColumn.left; right: mainColumn.right; top: mainColumn.top }
             onShowMenu: menu.visible = !menu.visible;
+            onCategoryChanged: {
+                main.parent.categoryId = catId;
+                console.log(catId);
+            }
         }
 
         TableView {
             id: mainList
             anchors { top: categoryPanel.bottom; bottom: searchPanel.top; left: mainColumn.left; right: mainColumn.right }
+            TableViewColumn { role: "no"; title: "No"; width: 20}
             TableViewColumn { role: "login"; title: "Login"; width: 50}
             TableViewColumn { role: "password"; title: "Password"; width: 50}
             TableViewColumn { role: "source"; title: "Source"; width: 100}
@@ -35,7 +40,7 @@ Item {
 
         ListModel {
             id: dataModel
-            ListElement{ login: "DefaultLogin"; password: "Password"; source: "www.source.com"; description: "Default account for source." }
+            //ListElement{ login: "DefaultLogin"; password: "Password"; source: "www.source.com"; description: "Default account for source." }
         }
     }
 
@@ -50,9 +55,10 @@ Item {
 
     function test()
     {
-        for(var i = 0; i < 5; i++)
-        {
-            dataModel.append({"login": "Test", "password": "TestPassword", "source": "www.testsource.com", "description": "Test description" })
-        }
+//        var passwords = [Database.passwords(1)];
+//        for(var i = 0; i < passwords.length; i++)
+//        {
+//            console.log(i);
+//        }
     }
 }
