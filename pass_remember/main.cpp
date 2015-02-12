@@ -2,20 +2,21 @@
 #include <QQmlApplicationEngine>
 #include <QtQml>
 
+#include <QDebug>
+
 #include "Database.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    //Database db;
-
     QQmlApplicationEngine engine;
-    //engine.rootContext()->setContextProperty("Database", &db);
-
-    //qmlRegisterType<Password>("myPassword", 1, 0, "Password");
+    engine.setOfflineStoragePath(app.applicationDirPath());
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+
+    qDebug() << engine.offlineStoragePath();
+
 
     return app.exec();
 }

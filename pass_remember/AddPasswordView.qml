@@ -22,17 +22,16 @@ Item {
             Button {
                 text: "Add"
                 onClicked: {
-                    DB.addAccount(login.text, password.text, source.text, description.text, '1');
-//                    if ( checkData([login.text, password.text, source.text]) ) {
-//                        if ( Database.addPassword( login.text, password.text, source.text, description.text, main.parent.categoryId ) ) {
-//                            console.log( "Password to "+login.text+" added !" );
-//                            login.text = ""; password.text = ""; source.text = ""; description.text = "";
-//                        }
-//                        else
-//                            console.log("Adding password fail !");
-//                    }
-//                    else
-//                        console.log("Data missing !");
+                    if ( checkData([login.text, password.text, source.text]) ) {
+                        if ( DB.addAccount(login.text, password.text, source.text, description.text, main.parent.categoryId) ) {
+                            console.log( "Account "+login.text+" added !" );
+                            login.text = ""; password.text = ""; source.text = ""; description.text = "";
+                        }
+                        else
+                            console.log("Adding password fail !");
+                    }
+                    else
+                        console.log("Data missing !");
                 }
             }
             Button { text: "Cancel"; onClicked: main.parent.source = "MainView.qml"; }

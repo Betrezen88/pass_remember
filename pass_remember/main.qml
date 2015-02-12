@@ -19,10 +19,6 @@ Window {
 
             anchors.fill: parent
             source: "MainView.qml"
-
-            //onCategoryIdChanged: console.log("categoryId: "+categoryId)
-
-            Component.onCompleted: DB.createDatabase();
         }
     }
 }

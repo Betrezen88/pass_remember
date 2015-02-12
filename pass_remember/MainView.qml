@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.3
+import "Database.js" as DB
 
 Item {
     id: main
@@ -19,6 +20,7 @@ Item {
             onCategoryChanged: {
                 main.parent.categoryId = catId;
                 console.log(catId);
+                getAccounts(catId);
             }
         }
 
@@ -51,14 +53,18 @@ Item {
         onShowAddPassword: main.parent.source = "AddPasswordView.qml";
     }
 
-    Component.onCompleted: test();
+    Component.onCompleted: DB.createDatabase();
 
-    function test()
-    {
-//        var passwords = [Database.passwords(1)];
-//        for(var i = 0; i < passwords.length; i++)
-//        {
-//            console.log(i);
-//        }
+    function getAccounts(categoryId) {
+        var accounts = DB.accounts(categoryId);
+        for(var i = 0; i < accounts.rows.length; i++) {
+            dataModel.append({
+                "no": i+1,
+                "login": accounts.rows.item(i).login,
+                "password": accounts.rows.item(i).password,
+                "source": accounts.rows.item(i).source,
+                "description": accounts.rows.item(i).description
+            });
+        }
     }
 }

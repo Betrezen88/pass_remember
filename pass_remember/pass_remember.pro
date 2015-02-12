@@ -4,7 +4,6 @@ QT += qml quick widgets sql
 
 SOURCES += main.cpp \
     Database.cpp \
-    Password.cpp
 
 RESOURCES += qml.qrc
 
@@ -19,4 +18,3 @@ DISTFILES += \
 
 HEADERS += \
     Database.h \
-    Password.h

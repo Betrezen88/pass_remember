@@ -29,6 +29,7 @@ function addCategory(catName) {
 }
 
 function addAccount(login, password, source, description, categoryId) {
+    console.log("addAccount()")
     var db = getDatabase();
     var ret;
     db.transaction(
@@ -36,7 +37,7 @@ function addAccount(login, password, source, description, categoryId) {
             ret = tx.executeSql('INSERT INTO account VALUES(null, ?, ?, ?, ?, ?);', [login, password, source, description, categoryId]);
         }
     )
-    return ret;
+    return parseInt(ret.insertId);
 }
 
 function categories() {
@@ -52,19 +53,22 @@ function categories() {
 }
 
 function categoryId(name) {
+    console.log("categoryId()");
     var db = getDatabase();
-    var ret = -1;
+    var ret = 0;
     db.transaction(
         function(tx) {
             var tmp = tx.executeSql('SELECT id FROM category WHERE name = ?;', [name]);
             if (tmp.rows.item(0) !== undefined)
-                ret = tmp.rows.item(0);
+                ret = tmp.rows.item(0).id;
+            //console.log("Category: "+name+" | ID: "+ret);
         }
     )
     return ret;
 }
 
 function accounts(categoryId) {
+    console.log("accounts()");
     var db = getDatabase();
     var ret;
     db.transaction(
@@ -72,4 +76,5 @@ function accounts(categoryId) {
             ret = tx.executeSql('SELECT * FROM account WHERE categoryId = ?;', [categoryId]);
         }
     )
+    return ret;
 }

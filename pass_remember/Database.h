@@ -6,8 +6,6 @@
 #include <QStringList>
 #include <QList>
 
-#include "Password.h"
-
 class Database : public QObject
 {
     Q_OBJECT
