@@ -1,8 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Window 2.2
-import QtQuick.LocalStorage 2.0
-import "Database.js" as DB
 
 Window {
     height: 450
@@ -17,7 +15,8 @@ Window {
 
             property int categoryId
 
-            anchors.fill: parent
+            width: parent.parent.width
+            height: parent.parent.height
             source: "MainView.qml"
         }
     }

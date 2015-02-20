@@ -11,8 +11,8 @@ function createDatabase() {
 
     db.transaction(
         function(tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS category (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)');
-            tx.executeSql('CREATE TABLE IF NOT EXISTS account (id INTEGER PRIMARY KEY AUTOINCREMENT, login TEXT, password TEXT, source TEXT, description TEXT, categoryId INTEGER);');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS category (id INTEGER PRIMARY KEY AUTOINCREMENT, name CHAR(30))');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS account (id INTEGER PRIMARY KEY AUTOINCREMENT, login CHAR(20), password CHAR(64), source CHAR(50), description CHAR(200), categoryId INTEGER)');
         }
     )
 }
@@ -61,7 +61,7 @@ function categoryId(name) {
             var tmp = tx.executeSql('SELECT id FROM category WHERE name = ?;', [name]);
             if (tmp.rows.item(0) !== undefined)
                 ret = tmp.rows.item(0).id;
-            //console.log("Category: "+name+" | ID: "+ret);
+            console.log("Category: "+name+" | ID: "+ret);
         }
     )
     return ret;

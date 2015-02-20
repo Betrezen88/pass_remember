@@ -18,7 +18,7 @@ Item {
                 text: "Ok"
                 onClicked: {
                     if (categoryName.text !== "") {
-                        if ( DB.categoryId(categoryName.text) < 0 ) {
+                        if ( DB.categoryId(categoryName.text) === 0 ) {
                             DB.addCategory( categoryName.text )
                             main.parent.source = "MainView.qml"
                         } else
