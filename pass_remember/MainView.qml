@@ -28,8 +28,8 @@ Item {
             anchors { top: categoryPanel.bottom; bottom: searchPanel.top; left: mainColumn.left; right: mainColumn.right }
             TableViewColumn { role: "no"; title: "No"; width: main.width * 0.1 }
             TableViewColumn { role: "login"; title: "Login"; width: main.width * 0.3 }
-            TableViewColumn { role: "password"; title: "Password"; width: main.width * 0.3 }
-            TableViewColumn { role: "source"; title: "Source"; width: main.width * 0.3 }
+            //TableViewColumn { role: "password"; title: "Password"; width: main.width * 0.3 }
+            TableViewColumn { role: "source"; title: "Source"; width: main.width * 0.5 }
             model: dataModel
         }
 
@@ -56,6 +56,7 @@ Item {
         for(var i = 0; i < accounts.rows.length; i++) {
             dataModel.append({
                 "no": i+1,
+                "id": accounts.rows.item(i).id,
                 "login": accounts.rows.item(i).login,
                 "password": accounts.rows.item(i).password,
                 "source": accounts.rows.item(i).source,

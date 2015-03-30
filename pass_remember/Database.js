@@ -78,3 +78,15 @@ function accounts(categoryId) {
     )
     return ret;
 }
+
+function accountsByColumn(categoryId, column, frase) {
+    console.log("accountsByColumn()");
+    var db = getDatabase();
+    var ret;
+    db.transaction(
+        function(tx) {
+            ret = tx.executeSql("SELECT * FROM account WHERE categoryId = ? AND ? LIKE '%?%' ");
+        }
+    )
+    return ret;
+}

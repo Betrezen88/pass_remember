@@ -8,5 +8,6 @@
         <file>AddCategoryView.qml</file>
         <file>AddPasswordView.qml</file>
         <file>Database.js</file>
+        <file>AccountView.qml</file>
     </qresource>
 </RCC>
