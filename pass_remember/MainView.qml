@@ -27,10 +27,14 @@ Item {
             id: mainList
             anchors { top: categoryPanel.bottom; bottom: searchPanel.top; left: mainColumn.left; right: mainColumn.right }
             TableViewColumn { role: "no"; title: "No"; width: main.width * 0.1 }
-            TableViewColumn { role: "login"; title: "Login"; width: main.width * 0.3 }
+            TableViewColumn { role: "login"; title: "Login"; width: main.width * 0.4 - 1 }
             //TableViewColumn { role: "password"; title: "Password"; width: main.width * 0.3 }
-            TableViewColumn { role: "source"; title: "Source"; width: main.width * 0.5 }
+            TableViewColumn { role: "source"; title: "Source"; width: main.width * 0.5 - 3 }
             model: dataModel
+            onActivated: {
+                main.parent.accountId = dataModel.get(row).id;
+                main.parent.source = "AccountView.qml";
+            }
         }
 
         SearchPanel {

@@ -32,7 +32,10 @@ Item {
     function getCategories() {
         //console.log("getCategories()");
         var categories = DB.categories();
-        for(var i = 0; i < categories.rows.length; i++)
+        for(var i = 0; i < categories.rows.length; i++) {
             categoryModel.append({ text: categories.rows.item(i).name });
+            if (categories.rows.item(i).id === main.parent.categoryId)
+                category.currentIndex = i;
+        }
     }
 }

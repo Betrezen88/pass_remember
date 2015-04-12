@@ -14,6 +14,7 @@ Window {
             id: pageLoader
 
             property int categoryId
+            property int accountId
 
             width: parent.parent.width
             height: parent.parent.height

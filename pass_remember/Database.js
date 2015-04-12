@@ -6,7 +6,7 @@ function getDatabase() {
 }
 
 function createDatabase() {
-    console.log("createDatabase()");
+    //console.log("createDatabase()");
     var db = getDatabase();
 
     db.transaction(
@@ -18,8 +18,8 @@ function createDatabase() {
 }
 
 function addCategory(catName) {
-    console.log("addCategory()");
-    console.log(catName+" | "+typeof(catName));
+    //console.log("addCategory()");
+    //console.log(catName+" | "+typeof(catName));
     var db = getDatabase();
     db.transaction(
         function(tx) {
@@ -29,7 +29,7 @@ function addCategory(catName) {
 }
 
 function addAccount(login, password, source, description, categoryId) {
-    console.log("addAccount()")
+    //console.log("addAccount()")
     var db = getDatabase();
     var ret;
     db.transaction(
@@ -41,7 +41,7 @@ function addAccount(login, password, source, description, categoryId) {
 }
 
 function categories() {
-    console.log("categories()");
+    //console.log("categories()");
     var db = getDatabase();
     var ret;
     db.transaction(
@@ -53,7 +53,7 @@ function categories() {
 }
 
 function categoryId(name) {
-    console.log("categoryId()");
+    //console.log("categoryId()");
     var db = getDatabase();
     var ret = 0;
     db.transaction(
@@ -68,7 +68,7 @@ function categoryId(name) {
 }
 
 function accounts(categoryId) {
-    console.log("accounts()");
+    //console.log("accounts()");
     var db = getDatabase();
     var ret;
     db.transaction(
@@ -80,7 +80,7 @@ function accounts(categoryId) {
 }
 
 function accountsByColumn(categoryId, column, frase) {
-    console.log("accountsByColumn()");
+    //console.log("accountsByColumn()");
     var db = getDatabase();
     var ret;
     db.transaction(
@@ -89,4 +89,28 @@ function accountsByColumn(categoryId, column, frase) {
         }
     )
     return ret;
+}
+
+function accountsById(accountId) {
+    //console.log("accountsById()");
+    var db = getDatabase();
+    var ret;
+    db.transaction(
+        function(tx) {
+            ret = tx.executeSql("SELECT * FROM account WHERE id = ?", [accountId]);
+        }
+    )
+    return ret;
+}
+
+function updateAccount(accountId, login, password, source, description, categoryId) {
+    //console.log("updateAccount():", accountId, login, password, source, description);
+    var db = getDatabase();
+    var ret;
+    db.transaction(
+        function(tx) {
+            ret = tx.executeSql("UPDATE account SET login = ? , password = ?, source = ?, description = ?, categoryId = ? WHERE id = ?",
+                                [login, password, source, description, categoryId, accountId]);
+        }
+    )
 }
