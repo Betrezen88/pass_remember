@@ -85,7 +85,7 @@ function accountsByColumn(categoryId, column, frase) {
     var ret;
     db.transaction(
         function(tx) {
-            ret = tx.executeSql("SELECT * FROM account WHERE categoryId = ? AND ? LIKE '%?%' ");
+            ret = tx.executeSql("SELECT * FROM account WHERE categoryId = ? AND ? LIKE '%?%' ", [categoryId, column, frase]);
         }
     )
     return ret;
@@ -111,6 +111,15 @@ function updateAccount(accountId, login, password, source, description, category
         function(tx) {
             ret = tx.executeSql("UPDATE account SET login = ? , password = ?, source = ?, description = ?, categoryId = ? WHERE id = ?",
                                 [login, password, source, description, categoryId, accountId]);
+        }
+    )
+}
+
+function deleteAccount(accountId) {
+    var db = getDatabase();
+    db.transaction(
+        function(tx) {
+            tx.executeSql("DELETE FROM account WHERE id = ?", [accountId]);
         }
     )
 }

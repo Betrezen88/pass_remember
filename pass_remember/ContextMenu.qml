@@ -23,9 +23,10 @@ Item {
     Column {
         spacing: 2
         anchors { right: parent.right; bottom: parent.bottom; }
-        Button { text: "Add Category"; onClicked: main.showAddCategory(); }
-        Button { text: "Add Password"; onClicked: main.showAddPassword(); }
-        Button { text: "Quit"; }
+        Button { text: "Add Category"; width: 130; onClicked: main.showAddCategory(); }
+        Button { text: "Add Password"; width: 130; onClicked: main.showAddPassword(); }
+        Button { text: "Delete Selected"; width: 130; }
+        Button { text: "Quit"; width: 130; onClicked: Qt.quit() }
     }
 }
 

@@ -1,4 +1,4 @@
-import QtQuick 2.3
+import QtQuick 2.4
 import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.1
 import "Database.js" as DB
@@ -72,30 +72,39 @@ Item {
         }
 
         RowLayout {
+            spacing: 20
             anchors.horizontalCenter: mainColumn.horizontalCenter
-            Button {
-                text: "Back"
+            ImageButton {
+                width: 40; height: 40
+                source: "images/images/back.png"
                 onClicked: {
                     if (main.edited)
                         DB.updateAccount(main.parent.accountId, login.text, password.text, source.text, description.text, DB.categoryId(category.currentText));
                     main.parent.source = "MainView.qml";
                 }
             }
-            Button {
-                text: "Edit";
+            ImageButton {
+                width: 40; height: 40
+                source: "images/images/edit.png"
                 onClicked: { main.isReadOnly = !main.isReadOnly; edited = true; }
             }
-            Button {
-                text: "Show"
+            ImageButton {
+                width: 40; height: 40
+                source: "images/images/delete.png"
                 onClicked: {
-                    if (text === "Show") {
+                    DB.deleteAccount(main.parent.accountId);
+                    main.parent.accountId = 0;
+                    main.parent.source = "MainView.qml";
+                }
+            }
+            ImageButton {
+                width: 40; height: 40
+                source: "images/images/show.png"
+                onClicked: {
+                    if (password.echoMode === TextInput.Password)
                         password.echoMode = TextInput.Normal
-                        text = "Hide"
-                    }
-                    else {
+                    else
                         password.echoMode = TextInput.Password
-                        text = "Show"
-                    }
                 }
             }
         }

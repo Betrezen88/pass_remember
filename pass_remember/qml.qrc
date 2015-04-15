@@ -9,5 +9,13 @@
         <file>AddPasswordView.qml</file>
         <file>Database.js</file>
         <file>AccountView.qml</file>
+        <file>ImageButton.qml</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>images/delete.png</file>
+        <file>images/back.png</file>
+        <file>images/edit.png</file>
+        <file>images/show.png</file>
+        <file>images/add.png</file>
     </qresource>
 </RCC>

@@ -31,7 +31,8 @@ Item {
             //TableViewColumn { role: "password"; title: "Password"; width: main.width * 0.3 }
             TableViewColumn { role: "source"; title: "Source"; width: main.width * 0.5 - 3 }
             model: dataModel
-            onActivated: {
+            selectionMode: SelectionMode.MultiSelection
+            onDoubleClicked: {
                 main.parent.accountId = dataModel.get(row).id;
                 main.parent.source = "AccountView.qml";
             }

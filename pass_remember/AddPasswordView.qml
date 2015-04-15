@@ -8,19 +8,27 @@ Item {
     anchors.fill: parent
 
     Column {
-        anchors.centerIn: main
-        spacing: 5
+        anchors.fill: main
+        anchors.margins: 10
+        spacing: 10
 
-        Label { text: "Add New Password" }
-        TextField { id: login; placeholderText: "Login" }
-        TextField { id: password; placeholderText: "Password" }
-        TextField { id: source; placeholderText: "Source" }
-        Label { text: "Description ("+description.length+"/200):" }
-        TextArea { id: description; }
+        Label { text: "Add New Password"; anchors.horizontalCenter: parent.horizontalCenter }
+        TextField { id: login; placeholderText: "Login"; horizontalAlignment: TextInput.AlignHCenter; anchors { left: parent.left; right: parent.right } }
+        TextField { id: password; placeholderText: "Password"; horizontalAlignment: TextInput.AlignHCenter; anchors { left: parent.left; right: parent.right } }
+        TextField { id: source; placeholderText: "Source"; horizontalAlignment: TextInput.AlignHCenter; anchors { left: parent.left; right: parent.right } }
+        Label { text: "Description ("+description.length+"/200):"; anchors.horizontalCenter: parent.horizontalCenter }
+        TextArea { id: description; anchors { left: parent.left; right: parent.right } }
         Row {
-            spacing: 2
-            Button {
-                text: "Add"
+            spacing: 40
+            anchors.horizontalCenter: parent.horizontalCenter
+            ImageButton {
+                width: 64; height: 64
+                source: "images/images/back.png"
+                onClicked: main.parent.source = "MainView.qml";
+            }
+            ImageButton {
+                width: 64; height: 64
+                source: "images/images/add.png"
                 onClicked: {
                     if ( checkData([login.text, password.text, source.text]) ) {
                         if ( DB.addAccount(login.text, password.text, source.text, description.text, main.parent.categoryId) ) {
@@ -34,7 +42,6 @@ Item {
                         console.log("Data missing !");
                 }
             }
-            Button { text: "Cancel"; onClicked: main.parent.source = "MainView.qml"; }
         }
     }
 
