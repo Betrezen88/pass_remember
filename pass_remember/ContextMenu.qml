@@ -7,6 +7,7 @@ Item {
 
     signal showAddCategory();
     signal showAddPassword();
+    signal deleteSelected();
 
     //tło
     Rectangle {
@@ -25,7 +26,7 @@ Item {
         anchors { right: parent.right; bottom: parent.bottom; }
         Button { text: "Add Category"; width: 130; onClicked: main.showAddCategory(); }
         Button { text: "Add Password"; width: 130; onClicked: main.showAddPassword(); }
-        Button { text: "Delete Selected"; width: 130; }
+        Button { text: "Delete Selected"; width: 130; onClicked: main.deleteSelected(); }
         Button { text: "Quit"; width: 130; onClicked: Qt.quit() }
     }
 }

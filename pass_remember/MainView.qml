@@ -51,6 +51,7 @@ Item {
         visible: false;
         onShowAddCategory: main.parent.source = "AddCategoryView.qml";
         onShowAddPassword: main.parent.source = "AddPasswordView.qml";
+        onDeleteSelected: main.deleteSelected();
     }
 
     Component.onCompleted: DB.createDatabase();
@@ -68,5 +69,15 @@ Item {
                 "description": accounts.rows.item(i).description
             });
         }
+    }
+
+    function deleteSelected() {
+        mainList.selection.forEach(
+                    function(rowIndex) {
+                        DB.deleteAccount(dataModel.get(rowIndex).id);
+                    }
+        );
+        getAccounts(main.parent.categoryId);
+        menu.visible = false;
     }
 }

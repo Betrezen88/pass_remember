@@ -16,7 +16,7 @@ v0.4
 - utworzenie widoku pojedynczego hasła              +
 - pokazywanie/ukrywanie hasła w widoku              +
 - usuwanie pojedynczego hasła                       +
-- usuwanie wielu haseł na raz                       -
+- usuwanie wielu haseł na raz                       +
 
 v0.5
 - wyszukiwanie haseł po wpisanej frazie i wybranej kolumnie             -
