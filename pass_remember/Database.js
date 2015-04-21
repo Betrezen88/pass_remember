@@ -85,7 +85,7 @@ function accountsByColumn(categoryId, column, frase) {
     var ret;
     db.transaction(
         function(tx) {
-            ret = tx.executeSql("SELECT * FROM account WHERE categoryId = ? AND ? LIKE '%?%' ", [categoryId, column, frase]);
+            ret = tx.executeSql("SELECT * FROM account WHERE categoryId = "+categoryId+" AND "+column+" LIKE '%"+frase+"%'");
         }
     )
     return ret;

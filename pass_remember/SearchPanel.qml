@@ -5,14 +5,13 @@ Item {
     id: main
     height: 40
 
-    property alias searchFrase: searchFrase.text
-    signal search(string column, string frase)
+    signal search(string frase, string column)
 
     TextField {
         id: searchFrase
         width: main.width/2; anchors{ top: main.top; bottom: main.bottom; left: main.left }
         placeholderText: "Search Frase"
-        onTextChanged: main.search(searchFrase.text, searchColumn.currentText)
+        onTextChanged: main.search(searchFrase.text, searchColumn.currentText);
     }
 
     ComboBox {

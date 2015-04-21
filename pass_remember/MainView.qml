@@ -41,6 +41,12 @@ Item {
         SearchPanel {
             id: searchPanel
             anchors { left: mainColumn.left; right: mainColumn.right; bottom: mainColumn.bottom }
+            onSearch: {
+                if (frase !== "")
+                    getFilteredAccounts(main.parent.categoryId, frase, column);
+                else
+                    getAccounts(main.parent.categoryId);
+            }
         }
 
         ListModel { id: dataModel }
@@ -59,16 +65,13 @@ Item {
     function getAccounts(categoryId) {
         dataModel.clear();
         var accounts = DB.accounts(categoryId);
-        for(var i = 0; i < accounts.rows.length; i++) {
-            dataModel.append({
-                "no": i+1,
-                "id": accounts.rows.item(i).id,
-                "login": accounts.rows.item(i).login,
-                "password": accounts.rows.item(i).password,
-                "source": accounts.rows.item(i).source,
-                "description": accounts.rows.item(i).description
-            });
-        }
+        fillModel(accounts);
+    }
+
+    function getFilteredAccounts(categoryId, frase, column) {
+        dataModel.clear();
+        var accounts = DB.accountsByColumn(categoryId, column, frase);
+        fillModel(accounts);
     }
 
     function deleteSelected() {
@@ -79,5 +82,18 @@ Item {
         );
         getAccounts(main.parent.categoryId);
         menu.visible = false;
+    }
+
+    function fillModel(accounts) {
+        for(var i = 0; i < accounts.rows.length; i++) {
+            dataModel.append({
+                "no": i+1,
+                "id": accounts.rows.item(i).id,
+                "login": accounts.rows.item(i).login,
+                "password": accounts.rows.item(i).password,
+                "source": accounts.rows.item(i).source,
+                "description": accounts.rows.item(i).description
+            });
+        }
     }
 }
