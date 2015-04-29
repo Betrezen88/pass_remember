@@ -10,6 +10,7 @@
         <file>Database.js</file>
         <file>AccountView.qml</file>
         <file>ImageButton.qml</file>
+        <file>MessageWindow.qml</file>
     </qresource>
     <qresource prefix="/images">
         <file>images/delete.png</file>

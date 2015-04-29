@@ -19,6 +19,6 @@ v0.4
 - usuwanie wielu haseł na raz                       +
 
 v0.5
-- wyszukiwanie haseł po wpisanej frazie i wybranej kolumnie             -
-- dodanie okna pytającego czy użytkownik na pewno chce usunąć hasło     -
+- wyszukiwanie haseł po wpisanej frazie i wybranej kolumnie             +
+- dodanie okna pytającego czy użytkownik na pewno chce usunąć hasło     +
 - dodanie okna informującego o dodaniu hasła                            -

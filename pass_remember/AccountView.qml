@@ -92,9 +92,10 @@ Item {
                 width: 40; height: 40
                 source: "images/images/delete.png"
                 onClicked: {
-                    DB.deleteAccount(main.parent.accountId);
-                    main.parent.accountId = 0;
-                    main.parent.source = "MainView.qml";
+                    message.visible = true;
+                    //DB.deleteAccount(main.parent.accountId);
+                    //main.parent.accountId = 0;
+                    //main.parent.source = "MainView.qml";
                 }
             }
             ImageButton {
@@ -108,6 +109,15 @@ Item {
                 }
             }
         }
+    }
+
+    MessageWindow {
+        id: message;
+        visible: false
+        anchors.fill: main
+        textMessage: "Are you shure about deleting this account password ?"
+        onCancel: message.visible = false;
+        onAccept: console.log("Ok");
     }
 
     Component.onCompleted: { getAccount(main.parent.accountId); }
